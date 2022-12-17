@@ -1,18 +1,19 @@
 #include <stdio.h>
 
 int main(void) {
-	char input[100];
-	int arr[26] = {0, };
-	for (int i = 0; i < 26; i++)
-		arr[i] = -1;
-
-	scanf("%s", input);
-	for (int i = 0; input[i] != '\0'; i++) {
-		if (arr[input[i] - 'a'] == -1)
-			arr[input[i] - 'a'] += i + 1;
+	int a, b;
+	int A = 0, B = 0;
+	scanf("%d %d", &a, &b);
+	for (int i = 0; i < 3; i++) {
+		A += a % 10;
+		B += b % 10;
+		a /= 10;
+		b /= 10;
+		if (i == 2)
+			break;
+		A *= 10;
+		B *= 10;
 	}
-	for (int i = 0; i < 26; i++) {
-		printf("%d ", arr[i]);
-	}
+	printf("%d", A > B ? A : B);
 	return 0;
 }
