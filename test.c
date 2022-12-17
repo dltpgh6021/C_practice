@@ -1,24 +1,19 @@
 #include <stdio.h>
 
 int main(void) {
-	int input = 0;
-	int count = 0;
-	int arr[10] = {0, };
+	int input, x;
+	int in;
+	scanf("%d %d", &input, &x);
+	int arr[10000] = {0, };
 
-	for (int i = 0; i < 10; i++)
-		arr[i] = -1;
-	for (int i = 0; i < 10; i++) {
-		scanf("%d", &input);
-		for (int j = 0; j <= i; j++) {
-			if (arr[j] == input % 42)
-				break;
-			if (j == i) {
-				count++;
-				arr[i] = input % 42;
-			}
-		}
+	for (int i = 0; i < input; i++) {
+		scanf("%d", &in);
+		arr[i] = in;
+	}
+	for (int i = 0; arr[i] != 0; i++) {
+		if (arr[i] < x)
+			printf("%d ", arr[i]);
 	}
 
-	printf("%d \n", count);
 	return 0;
 }
