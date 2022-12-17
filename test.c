@@ -2,17 +2,18 @@
 
 int main(void) {
 	int input;
-	int score;
-	float result = 0;
-	int max = 0;
-	scanf("%d", &input);
-	for (int i = 0; i < input; i++) {
-		scanf("%d", &score);
-		if (score > max)
-			max = score;
-		result += score;
+	int arr[10] = {0, };
+	int result = 1;
+	for (int i = 0; i < 3; i++) {
+		scanf("%d", &input);
+		result *= input;
 	}
-	result = result / max * 100 / input;
-	printf("%f", result);
+	while (result != 0) {
+		arr[result % 10] += 1;
+		result /= 10;
+	}
+	for (int i = 0; i < 10; i++) {
+		printf("%d \n", arr[i]);
+	}
 	return 0;
 }
