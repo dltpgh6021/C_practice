@@ -1,23 +1,52 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(void) {
-	int x, y, w, h;
-	int arr[4] = {0, };
-	int min = 0;
-	scanf("%d %d %d %d", &x, &y, &w, &h);
+	int input;
+	int arr[10000];
+	int top = 0;
+	int a, b;
+	
+	for (int i = 0; ; i++) {
+		scanf("%d", &input);
+		getchar();
 
-	arr[0] = abs(x - w);
-	arr[1] = abs(x);
-	arr[2] = abs(y - h);
-	arr[3] = abs(y);
+		if (input == 0)
+			break;
 
-	min = arr[0];
-	for (int i = 1; i < 4; i++) {
-		if (arr[i] < min)
-			min = arr[i];
+		a = input;
+		b = 0;
+		while (1) {
+			if (b == 0) {
+				if (a % 10 == 0) {
+					arr[i] = 0;
+					break;
+				}
+			}
+			if (a == b) {
+				arr[i] = 1;
+				break;
+			}
+			if (a < b) {
+				arr[i] = 0;
+				break;
+			}
+
+			b = b * 10 + a % 10;
+			if (a == b) {
+				arr[i] = 1;
+				break;
+			}
+			a /= 10;
+		}
+
+		top++;
 	}
-	printf("%d \n", min);
+	for (int i = 0; i < top; i++) {
+		if (arr[i] == 1)
+			printf("yes \n");
+		else if(arr[i] == 0)
+			printf("no \n");
+	}
 
 	return 0;
 }
