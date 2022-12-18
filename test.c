@@ -1,19 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void) {
-	int input, x;
-	int in;
-	scanf("%d %d", &input, &x);
-	int arr[10000] = {0, };
+	int x, y, w, h;
+	int arr[4] = {0, };
+	int min = 0;
+	scanf("%d %d %d %d", &x, &y, &w, &h);
 
-	for (int i = 0; i < input; i++) {
-		scanf("%d", &in);
-		arr[i] = in;
+	arr[0] = abs(x - w);
+	arr[1] = abs(x);
+	arr[2] = abs(y - h);
+	arr[3] = abs(y);
+
+	min = arr[0];
+	for (int i = 1; i < 4; i++) {
+		if (arr[i] < min)
+			min = arr[i];
 	}
-	for (int i = 0; arr[i] != 0; i++) {
-		if (arr[i] < x)
-			printf("%d ", arr[i]);
-	}
+	printf("%d \n", min);
 
 	return 0;
 }
