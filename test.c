@@ -1,52 +1,37 @@
 #include <stdio.h>
 
+int check (int, int);
+
 int main(void) {
 	int input;
-	int arr[10000];
-	int top = 0;
-	int a, b;
+	int num = 1;
 	
-	for (int i = 0; ; i++) {
-		scanf("%d", &input);
-		getchar();
+	scanf("%d", &input);
 
-		if (input == 0)
+	while (1) {
+		if (check(input, num)) {
+			printf("%d \n", num);
 			break;
-
-		a = input;
-		b = 0;
-		while (1) {
-			if (b == 0) {
-				if (a % 10 == 0) {
-					arr[i] = 0;
-					break;
-				}
-			}
-			if (a == b) {
-				arr[i] = 1;
-				break;
-			}
-			if (a < b) {
-				arr[i] = 0;
-				break;
-			}
-
-			b = b * 10 + a % 10;
-			if (a == b) {
-				arr[i] = 1;
-				break;
-			}
-			a /= 10;
 		}
-
-		top++;
-	}
-	for (int i = 0; i < top; i++) {
-		if (arr[i] == 1)
-			printf("yes \n");
-		else if(arr[i] == 0)
-			printf("no \n");
+		else if (input == num) {
+			printf("0 \n");
+			break;
+		}
+		num++;
 	}
 
 	return 0;
+}
+
+int check(int input, int num) {
+	int sum = 0;
+	sum = num;
+	while (num != 0) {
+		sum += num % 10;
+		num /= 10;
+	}
+	if (sum == input)
+		return 1;
+	else 
+		return 0;
 }
