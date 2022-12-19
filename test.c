@@ -1,37 +1,19 @@
 #include <stdio.h>
 
-int check (int, int);
-
-int main(void) {
+int main(void) { //1, 7, 19, 37, 61, a + 6n
+				 //0, 1,  3,  6, 10, 
 	int input;
-	int num = 1;
-	
+	int count = 0;
+
 	scanf("%d", &input);
 
-	while (1) {
-		if (check(input, num)) {
-			printf("%d \n", num);
+	for (int i = 0; ; i++) {
+		count += i;
+		if (count * 6 + 1 >= input) {
+			printf("%d \n", i + 1);
 			break;
 		}
-		else if (input == num) {
-			printf("0 \n");
-			break;
-		}
-		num++;
 	}
 
 	return 0;
-}
-
-int check(int input, int num) {
-	int sum = 0;
-	sum = num;
-	while (num != 0) {
-		sum += num % 10;
-		num /= 10;
-	}
-	if (sum == input)
-		return 1;
-	else 
-		return 0;
 }
