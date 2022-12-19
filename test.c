@@ -1,19 +1,28 @@
 #include <stdio.h>
 
-int main(void) { //1, 7, 19, 37, 61, a + 6n
-				 //0, 1,  3,  6, 10, 
-	int input;
-	int count = 0;
+int check(int, int);
 
-	scanf("%d", &input);
+int main(void) { 
+	int a, b;
 
-	for (int i = 0; ; i++) {
-		count += i;
-		if (count * 6 + 1 >= input) {
-			printf("%d \n", i + 1);
-			break;
-		}
+	scanf("%d %d", &a, &b);
+
+	if (a >= b) {
+		printf("%d \n", check(a, b));
+		printf("%d \n", a * b / check(a, b));
+	}
+	else if (b > a) {
+		printf("%d \n", check(b, a));
+		printf("%d \n", a * b / check(b, a));
 	}
 
 	return 0;
+}
+
+int check(int a, int b) {
+	if (b != 0) {
+		return check(b, a % b);
+	}
+	else 
+		return a;
 }
