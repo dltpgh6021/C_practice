@@ -1,15 +1,16 @@
 #include <stdio.h>
 
-int fac(int a) {
-	if (a == 0)
-		return 1;
-	else 
-		return a * fac(a - 1);
-}
-
 int main(void) { 
-	int n, k;
-	scanf("%d %d", &n, &k);
-	printf("%d \n", fac(n) / (fac(k) * fac(n - k)));
+	int num, input;
+	int arr[10000] = {0, };
+	scanf("%d", &num);
+	for (int i = 0; i < num; i++) {
+		scanf("%d", &input);
+		arr[input - 1]++;
+	}
+	for (int i = 0; i < 10000; i++) {
+		for (int j = 0; j < arr[i]; j++)
+			printf("%d \n", i + 1);
+	}
 	return 0;
 }
