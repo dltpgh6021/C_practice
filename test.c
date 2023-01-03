@@ -1,16 +1,24 @@
 #include <stdio.h>
 
 int main(void) { 
-	int num, input;
-	int arr[10000] = {0, };
-	scanf("%d", &num);
-	for (int i = 0; i < num; i++) {
-		scanf("%d", &input);
-		arr[input - 1]++;
+	int a, b, c;
+	int i = 0;
+	int arr[100000] = {0, };
+	scanf("%d %d %d", &a, &b, &c);	
+	while(a != 0 && b != 0 && c != 0) {
+		getchar();
+		if(c * c == a * a + b * b || a * a == b * b + c * c || b * b == a * a + c * c)
+			arr[i] = 1;
+		else 
+			arr[i] = -1;
+		scanf("%d %d %d", &a, &b, &c);
+		i++;
 	}
-	for (int i = 0; i < 10000; i++) {
-		for (int j = 0; j < arr[i]; j++)
-			printf("%d \n", i + 1);
+	for (int j = 0; j < i; j++) {
+		if(arr[j] == 1)
+			printf("right \n");
+		else
+			printf("wrong \n");
 	}
 	return 0;
 }
